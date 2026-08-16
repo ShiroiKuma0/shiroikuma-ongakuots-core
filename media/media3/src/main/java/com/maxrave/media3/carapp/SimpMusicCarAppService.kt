@@ -46,6 +46,13 @@ internal class SimpMusicCarAppService : CarAppService() {
                 .build()
         }
 
+    override fun onCreate() {
+        super.onCreate()
+        // 白い熊 音楽乙: start following the Auto colour slots set on the UI page, so a car screen
+        // built later can read them synchronously off the main thread's critical path.
+        SkCarColors.start()
+    }
+
     override fun onCreateSession(): Session = SimpMusicCarSession()
 }
 

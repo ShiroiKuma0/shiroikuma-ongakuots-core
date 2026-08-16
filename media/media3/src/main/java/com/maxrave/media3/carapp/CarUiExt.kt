@@ -12,6 +12,7 @@ import androidx.car.app.CarContext
 import androidx.car.app.constraints.ConstraintManager
 import androidx.car.app.model.CarIcon
 import androidx.car.app.model.CarIconSpan
+import androidx.car.app.model.ForegroundCarColorSpan
 import androidx.car.app.model.Row
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.IconCompat
@@ -68,6 +69,17 @@ internal fun CarContext.nowPlayingText(suffix: String): CharSequence =
             1,
             Spanned.SPAN_INCLUSIVE_EXCLUSIVE,
         )
+        // 白い熊 音楽乙: tint the whole marker line with our Auto accent. A foreground colour span
+        // is one of the few things the host lets an app set on row text — everything around it is
+        // the host's, by driver-distraction rule rather than by oversight.
+        if (isNotEmpty()) {
+            setSpan(
+                ForegroundCarColorSpan.create(SkCarColors.primary()),
+                0,
+                length,
+                Spanned.SPAN_INCLUSIVE_EXCLUSIVE,
+            )
+        }
     }
 
 /**

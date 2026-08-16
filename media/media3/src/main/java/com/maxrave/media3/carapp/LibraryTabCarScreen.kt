@@ -325,8 +325,10 @@ internal class LibraryTabCarScreen(
                     .Builder(IconCompat.createWithResource(carContext, R.drawable.ic_car_search))
                     .build(),
             )
-            // FAB constraint: custom actions must declare a background color
-            .setBackgroundColor(CarColor.PRIMARY)
+            // FAB constraint: custom actions must declare a background color.
+            // 白い熊 音楽乙: our own Auto accent rather than CarColor.PRIMARY, so the slot on the
+            // UI page actually moves it — the static car theme is only the fallback.
+            .setBackgroundColor(SkCarColors.primary())
             .setOnClickListener {
                 screenManager.push(SearchCarScreen(carContext, browserProvider))
             }.build()

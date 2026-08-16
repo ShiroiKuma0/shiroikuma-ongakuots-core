@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  白い熊 音楽乙 — the Android Auto colour theme.
+
+  Android Auto's host draws the templates itself and enforces its own backgrounds and contrast for
+  driver-distraction reasons, so an app cannot repaint the car screen wholesale. What it CAN declare
+  is this theme: `CarColor.PRIMARY` and `CarColor.SECONDARY` resolve to the four attributes below,
+  and every template element the app tints with them — floating action buttons, action strips, row
+  accents — comes out in the house yellow instead of the stock teal.
+
+  The dark variants are what the host actually uses on a dark car display; both are given so a light
+  head unit is covered too. Referenced from androidApp's manifest as
+  `androidx.car.app.theme`; the runtime override that follows the UI page's own Auto slots lives in
+  carapp/SkCarColors.kt.
+-->
+<resources>
+    <color name="sk_car_primary">#FFFFFF00</color>
+    <color name="sk_car_primary_dark">#FFFFFF00</color>
+    <color name="sk_car_secondary">#FFBEBE00</color>
+    <color name="sk_car_secondary_dark">#FFBEBE00</color>
+
+    <style name="ShiroikumaCarAppTheme">
+        <item name="carColorPrimary">@color/sk_car_primary</item>
+        <item name="carColorPrimaryDark">@color/sk_car_primary_dark</item>
+        <item name="carColorSecondary">@color/sk_car_secondary</item>
+        <item name="carColorSecondaryDark">@color/sk_car_secondary_dark</item>
+    </style>
+</resources>
